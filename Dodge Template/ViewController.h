@@ -12,7 +12,9 @@
 #import "MylogonAudio.h"
 
 
-@interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>
+@interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>{
+    float speed;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *hero;
 

@@ -45,14 +45,15 @@ int lol;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
+    speed = 1;
+    
 #warning imput mp3 filename here
     [[MylogonAudio sharedInstance]playBackgroundMusic:@"music.mp3"];
     
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
 #warning adUnitID here
-  //  self.banner.adUnitID = @"ca-app-pub-2530230787721578/3469134445";
+    //  self.banner.adUnitID = @"ca-app-pub-2530230787721578/3469134445";
     self.banner.delegate = self;
     self.banner.rootViewController = self;
     [self.banner loadRequest: [GADRequest request]];
@@ -117,7 +118,7 @@ int lol;
     score = 0;
     _scoreLabel.text = @"0";
     
-
+    
     
     difficulty = 4.0;
     
@@ -127,9 +128,9 @@ int lol;
         gameTimer = nil;
     }
     [self initObject1];
-    [self initObject2];
+    [self performSelector:@selector(initObject2) withObject:nil afterDelay:1];
     [self initObject3];
-    [self initObject4];
+    [self performSelector:@selector(initObject4) withObject:nil afterDelay:1.5];
     [self initObject5];
     [self resetHero];
     gameState = kGameStateRunning;
@@ -159,10 +160,6 @@ int lol;
     [self performSelector:@selector(move) withObject:nil afterDelay:1];
 }
 
--(void)move{
-    _hero.center = CGPointMake(-100, -100);
-
-}
 
 - (IBAction)highscores:(id)sender {
     [self showLeaderboard];
@@ -202,12 +199,28 @@ int lol;
 #pragma mark - GAME
 -(void)gameLoop{
     
+    if (score < 10) {
+        speed = 1;
+    }
+    if (score >= 10 && score < 20) {
+        speed = 1.5;
+    }
+    if (score >= 20 && score < 30) {
+        speed = 2;
+    }
+    if (score >= 30 && score < 40) {
+        speed = 2.5;
+    }
+    if (score >= 40) {
+        speed = 3;
+    }
     
-    _object1.center = CGPointMake(_object1.center.x, _object1.center.y + 2);
-    _object2.center = CGPointMake(_object2.center.x, _object2.center.y + 2);
-    _object3.center = CGPointMake(_object3.center.x, _object3.center.y + 3);
-    _object4.center = CGPointMake(_object4.center.x, _object4.center.y + 2);
-    _object5.center = CGPointMake(_object5.center.x, _object5.center.y + 1);
+    
+    _object1.center = CGPointMake(_object1.center.x, _object1.center.y + speed);
+    _object2.center = CGPointMake(_object2.center.x, _object2.center.y + speed);
+    _object3.center = CGPointMake(_object3.center.x, _object3.center.y + speed);
+    _object4.center = CGPointMake(_object4.center.x, _object4.center.y + speed);
+    _object5.center = CGPointMake(_object5.center.x, _object5.center.y + speed);
     
     
     if(gameState == kGameStateRunning ){
@@ -217,69 +230,31 @@ int lol;
         //Move the objects down
         
         //Check if the object is off the screen, if so reset the position
-     
+        
         
         if(_object1.center.y > 660){
-         /*   score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            //if the asteroid is successfully dodged, update the score
-           */ [self initObject1];
+            [self initObject1];
             
         }
         if(_object2.center.y > 660){
-         /*   score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-           */ [self initObject2];
-            
+            gameState = kGameStateOver;
+            [self gameOver];
             //if the asteroid is successfully dodged, update the score
         }
         if(_object3.center.y > 660){
-         /*   score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-           */ [self initObject3];
-            
+            gameState = kGameStateOver;
+            [self gameOver];
             //if the asteroid is successfully dodged, update the score
         }
         if(_object4.center.y > 660){
-          /*  score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            //if the asteroid is successfully dodged, update the score
-           */ [self initObject4];
-            
+            gameState = kGameStateOver;
+            [self gameOver];
         }
         if(_object5.center.y > 660){
-          /*  score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            //if the asteroid is successfully dodged, update the score
-          */  [self initObject5];
-         
+            gameState = kGameStateOver;
+            [self gameOver];
         }
-       
+        
         //check collision
         CGRect heroRect = CGRectMake(_hero.frame.origin.x, _hero.frame.origin.y, _hero.frame.size.width - 15 , _hero.frame.size.height - 50);
         
@@ -287,30 +262,27 @@ int lol;
             gameState = kGameStateOver;
             [self gameOver];
         }
+        
         if(CGRectIntersectsRect(heroRect, _object2.frame)){
-            [self clearingFist:_object2];
-            [self move];
+            [self initObject2];
             score ++;
-            
         }
+        
         if(CGRectIntersectsRect(heroRect, _object3.frame)){
-            [self clearingFist:_object3];
-            [self move];
+            [self initObject3];
             score ++;
-            
         }
+        
         if(CGRectIntersectsRect(heroRect, _object4.frame)){
-            [self clearingFist:_object4];
-            [self move];
+            [self initObject4];
             score ++;
-            
         }
+        
         if(CGRectIntersectsRect(heroRect, _object5.frame)){
-            [self clearingFist:_object5];
-            [self move];
+            [self initObject5];
             score ++;
-            
         }
+        
         
         _scoreLabel.text = [NSString stringWithFormat:@"%d", score];
     }
@@ -320,11 +292,7 @@ int lol;
     }
 }
 
--(void)clearingFist:(UIImageView *)IView{
-    
-    IView.center = CGPointMake(IView.frame.origin.x + 500, IView.frame.origin.y);
-    
-}
+
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //moves hero
@@ -337,18 +305,23 @@ int lol;
     
     //[self touchesMoved:touches withEvent:event];
 }
-/*
--(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-   
-    if(location.x > _hero.center.x){
-        _hero.image = [UIImage imageNamed:@"hero.png"];
-    }
-    else{
-        _hero.image = [UIImage imageNamed:@"hero.png"];
-    }
-    _hero.center=xLocation;
+
+-(void) move{
+    _hero.center = CGPointMake(-100, -100);
 }
-*/
+
+/*
+ -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+ 
+ if(location.x > _hero.center.x){
+ _hero.image = [UIImage imageNamed:@"hero.png"];
+ }
+ else{
+ _hero.image = [UIImage imageNamed:@"hero.png"];
+ }
+ _hero.center=xLocation;
+ }
+ */
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     _hero.center = CGPointMake(-100, -100);
 }
@@ -461,29 +434,25 @@ int lol;
 
 -(void)initObject1{
     int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(100) - 250;
-    _object1.center = CGPointMake(r, h);
+  //  int h = arc4random_uniform(100) - 250;
+    _object1.center = CGPointMake(r, -_object1.frame.size.height/2);
     //pick random x coordinate, high y coordinate
 }
 -(void)initObject2{
     int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(300) - 950;
-    _object2.center = CGPointMake(r, h);
+    _object2.center = CGPointMake(r, -_object2.frame.size.height/2);
 }
 -(void)initObject3{
     int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(100) - 350;
-    _object3.center = CGPointMake(r, h);
+    _object3.center = CGPointMake(r, -_object3.frame.size.height/2);
 }
 -(void)initObject4{
     int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(300) - 400;
-    _object4.center = CGPointMake(r, h);
+    _object4.center = CGPointMake(r, -_object4.frame.size.height/2);
 }
 -(void)initObject5{
     int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(300) - 450;
-    _object5.center = CGPointMake(r, h);
+    _object5.center = CGPointMake(r, -_object5.frame.size.height/2);
 }
 
 
@@ -525,7 +494,7 @@ int lol;
 -(void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     NSLog(@"%@",error);
     _connecting.hidden = YES;
-
+    
 }
 - (IBAction)noAds:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -600,7 +569,7 @@ int lol;
         
     }
     _connecting.hidden = YES;
-   
+    
 }
 -(void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error{
     NSLog(@"%@",error);
