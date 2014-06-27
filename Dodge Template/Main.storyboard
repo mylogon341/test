@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="jKB-Pn-6Eb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-i5" id="jKB-Pn-6Eb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             </imageView>
@@ -167,13 +167,13 @@
                                     </button>
                                 </subviews>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instructions" id="v3e-YZ-Ryb">
-                                <rect key="frame" x="0.0" y="387" width="320" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connecting" id="Ldu-PR-Nhi">
                                 <rect key="frame" x="85" y="165" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ground" id="X95-cM-Tie">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" id="Gra-Hl-wJf" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -195,7 +195,6 @@
                         <outlet property="finalScore" destination="xon-ah-Gdu" id="NOs-pt-jRV"/>
                         <outlet property="gameoverView" destination="9Sh-yk-URk" id="7Tx-Rs-Q5p"/>
                         <outlet property="hero" destination="WbK-EQ-z91" id="vB9-d2-Nk6"/>
-                        <outlet property="instructions" destination="v3e-YZ-Ryb" id="zfd-g9-05X"/>
                         <outlet property="object1" destination="YOy-ZB-Mda" id="php-hu-yBv"/>
                         <outlet property="object2" destination="ltZ-1C-u5q" id="jfr-xQ-Sme"/>
                         <outlet property="object3" destination="jNc-5P-beZ" id="Uqb-KZ-udC"/>
@@ -211,13 +210,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="640" height="1136"/>
+        <image name="bg-i5" width="640" height="1136"/>
         <image name="brofist" width="150" height="150"/>
         <image name="connecting" width="300" height="300"/>
         <image name="gameover" width="493" height="86"/>
-        <image name="hero" width="300" height="300"/>
+        <image name="ground" width="640" height="201"/>
+        <image name="hero" width="150" height="150"/>
         <image name="highscore" width="267" height="150"/>
-        <image name="instructions" width="640" height="170"/>
         <image name="noads" width="150" height="91"/>
         <image name="play" width="267" height="150"/>
         <image name="rate" width="150" height="91"/>
