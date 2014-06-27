@@ -17,23 +17,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object1" image="steelFIST" id="YOy-ZB-Mda">
-                                <rect key="frame" x="13" y="10" width="45" height="49"/>
+                                <rect key="frame" x="13" y="10" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object2" image="brofist" id="ltZ-1C-u5q">
-                                <rect key="frame" x="66" y="10" width="48" height="50"/>
+                                <rect key="frame" x="66" y="10" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object3" image="brofist" id="jNc-5P-beZ">
-                                <rect key="frame" x="122" y="11" width="50" height="51"/>
+                                <rect key="frame" x="122" y="11" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object4" image="brofist" id="soy-AT-akn">
-                                <rect key="frame" x="186" y="10" width="52" height="52"/>
+                                <rect key="frame" x="186" y="10" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object5" image="brofist" id="s9f-7V-yhg">
-                                <rect key="frame" x="250" y="10" width="50" height="49"/>
+                                <rect key="frame" x="250" y="10" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eEG-Sh-phx">
@@ -215,7 +215,7 @@
         <image name="brofist" width="150" height="150"/>
         <image name="connecting" width="300" height="300"/>
         <image name="gameover" width="493" height="86"/>
-        <image name="hero" width="202" height="259"/>
+        <image name="hero" width="300" height="300"/>
         <image name="highscore" width="267" height="150"/>
         <image name="instructions" width="640" height="170"/>
         <image name="noads" width="150" height="91"/>

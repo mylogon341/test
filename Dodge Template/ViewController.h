@@ -9,6 +9,7 @@
 #import "GADBannerView.h"
 #import <StoreKit/StoreKit.h>
 #import "GameCenterManager.h"
+#import "MylogonAudio.h"
 
 
 @interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>

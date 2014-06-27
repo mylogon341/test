@@ -45,9 +45,13 @@ int lol;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+ 
+#warning imput mp3 filename here
+    [[MylogonAudio sharedInstance]playBackgroundMusic:@"music.mp3"];
+    
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
-    
+#warning adUnitID here
   //  self.banner.adUnitID = @"ca-app-pub-2530230787721578/3469134445";
     self.banner.delegate = self;
     self.banner.rootViewController = self;
@@ -284,21 +288,25 @@ int lol;
             [self gameOver];
         }
         if(CGRectIntersectsRect(heroRect, _object2.frame)){
+            [self clearingFist:_object2];
             [self move];
             score ++;
             
         }
         if(CGRectIntersectsRect(heroRect, _object3.frame)){
+            [self clearingFist:_object3];
             [self move];
             score ++;
             
         }
         if(CGRectIntersectsRect(heroRect, _object4.frame)){
+            [self clearingFist:_object4];
             [self move];
             score ++;
             
         }
         if(CGRectIntersectsRect(heroRect, _object5.frame)){
+            [self clearingFist:_object5];
             [self move];
             score ++;
             
@@ -312,14 +320,20 @@ int lol;
     }
 }
 
+-(void)clearingFist:(UIImageView *)IView{
+    
+    IView.center = CGPointMake(IView.frame.origin.x + 500, IView.frame.origin.y);
+    
+}
+
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //moves hero
     
     UITouch *touch = [[event allTouches]anyObject];
     CGPoint location = [touch locationInView:touch.view];
-    _hero.center = CGPointMake(location.x, location.y);
+    _hero.center = CGPointMake(location.x, location.y+30);
     
-    [self performSelector:@selector(move) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(move) withObject:nil afterDelay:0.03];
     
     //[self touchesMoved:touches withEvent:event];
 }
