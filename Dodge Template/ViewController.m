@@ -459,12 +459,9 @@ int lol;
     
     if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
         
-        NSLog(@"true");
         IV.center = CGPointMake(IV.center.x,IV.center.y -80);
         [self coll2:IV];
-        
-    }else{
-        NSLog(@"false");
+   
     }
 }
 
@@ -472,10 +469,7 @@ int lol;
     
     if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
         
-        NSLog(@"true again");
         IV2.center = CGPointMake(IV2.center.x,IV2.center.y -80);
-    }else{
-        NSLog(@"false again");
     }
 }
 
