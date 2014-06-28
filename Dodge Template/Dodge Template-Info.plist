@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.luke.brofist</string>
+	<string>com.chempo.Brofist</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -26,6 +26,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>debussy.TTF</string>
 		<string>8-BIT WONDER.TTF</string>
 	</array>
 	<key>UIMainStoryboardFile</key>

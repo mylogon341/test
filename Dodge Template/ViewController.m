@@ -48,24 +48,25 @@ int lol;
     speed = 1;
     
 #warning imput mp3 filename here
-    [[MylogonAudio sharedInstance]playBackgroundMusic:@"music.mp3"];
+    [[MylogonAudio sharedInstance]playBackgroundMusic:@"bg.mp3"];
     
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
 #warning adUnitID here
-    //  self.banner.adUnitID = @"ca-app-pub-2530230787721578/3469134445";
+    
+    self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
     self.banner.delegate = self;
     self.banner.rootViewController = self;
     [self.banner loadRequest: [GADRequest request]];
     
     
-    _scoreLabel.font = [UIFont fontWithName:@"8BIT WONDER" size:35];
+    _scoreLabel.font = [UIFont fontWithName:@"debussy" size:35];
     _scoreLabel.textColor = [UIColor whiteColor];
     
-    _finalScore.font = [UIFont fontWithName:@"8BIT WONDER" size:20];
+    _finalScore.font = [UIFont fontWithName:@"debussy" size:20];
     _finalScore.textColor = [UIColor grayColor];
     
-    _bestScore.font = [UIFont fontWithName:@"8BIT WONDER" size:20];
+    _bestScore.font = [UIFont fontWithName:@"debussy" size:20];
     _bestScore.textColor = [UIColor blackColor];
     
     [self initObject1];

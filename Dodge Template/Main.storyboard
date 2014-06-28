@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,23 +17,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object1" image="steelFIST" id="YOy-ZB-Mda">
-                                <rect key="frame" x="13" y="10" width="60" height="60"/>
+                                <rect key="frame" x="-27" y="-30" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object2" image="brofist" id="ltZ-1C-u5q">
-                                <rect key="frame" x="66" y="10" width="60" height="60"/>
+                                <rect key="frame" x="26" y="-30" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object3" image="brofist" id="jNc-5P-beZ">
-                                <rect key="frame" x="122" y="11" width="60" height="60"/>
+                                <rect key="frame" x="82" y="-29" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object4" image="brofist" id="soy-AT-akn">
-                                <rect key="frame" x="186" y="10" width="60" height="60"/>
+                                <rect key="frame" x="146" y="-30" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object5" image="brofist" id="s9f-7V-yhg">
-                                <rect key="frame" x="250" y="10" width="60" height="60"/>
+                                <rect key="frame" x="210" y="-30" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eEG-Sh-phx">
@@ -211,7 +211,7 @@
     </scenes>
     <resources>
         <image name="bg-i5" width="640" height="1136"/>
-        <image name="brofist" width="150" height="150"/>
+        <image name="brofist" width="75" height="75"/>
         <image name="connecting" width="300" height="300"/>
         <image name="gameover" width="493" height="86"/>
         <image name="ground" width="640" height="201"/>
@@ -223,7 +223,7 @@
         <image name="restore" width="150" height="91"/>
         <image name="retry" width="267" height="150"/>
         <image name="scoreboard" width="253" height="91"/>
-        <image name="steelFIST" width="150" height="150"/>
+        <image name="steelFIST" width="75" height="75"/>
         <image name="title" width="510" height="195"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
