@@ -47,14 +47,15 @@ int lol;
     [super viewDidLoad];
     speed = 1;
     
-#warning imput mp3 filename here
     [[MylogonAudio sharedInstance]playBackgroundMusic:@"bg.mp3"];
     
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
 #warning adUnitID here
     
-    self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
+    objectsArray = [NSArray arrayWithObjects:_object1,_object2,_object3,_object4,_object5, nil];
+    
+    //  self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
     self.banner.delegate = self;
     self.banner.rootViewController = self;
     [self.banner loadRequest: [GADRequest request]];
@@ -68,13 +69,7 @@ int lol;
     
     _bestScore.font = [UIFont fontWithName:@"debussy" size:20];
     _bestScore.textColor = [UIColor blackColor];
-    
-    [self initObject1];
-    [self initObject2];
-    [self initObject3];
-    [self initObject4];
-    [self initObject5];
-    
+  
     gameState = kGameStateMenu;
     
     [self menu];
@@ -129,9 +124,9 @@ int lol;
         gameTimer = nil;
     }
     [self initObject1];
-    [self performSelector:@selector(initObject2) withObject:nil afterDelay:1];
+    [self initObject2];
     [self initObject3];
-    [self performSelector:@selector(initObject4) withObject:nil afterDelay:1.5];
+    [self initObject4];
     [self initObject5];
     [self resetHero];
     gameState = kGameStateRunning;
@@ -179,6 +174,11 @@ int lol;
         
     }
     
+    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
+    [self initObject2];
+    [self initObject3];
+    [self initObject4];
+    [self initObject5];
     
     [UIView animateWithDuration: 0.6f
                           delay: 0.3f
@@ -292,7 +292,6 @@ int lol;
         
     }
 }
-
 
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -434,27 +433,76 @@ int lol;
 }
 
 -(void)initObject1{
-    int r = arc4random_uniform(320) ;
-  //  int h = arc4random_uniform(100) - 250;
-    _object1.center = CGPointMake(r, -_object1.frame.size.height/2);
-    //pick random x coordinate, high y coordinate
+    int steelX = arc4random_uniform(320) ;
+    int steelY = -_object1.frame.size.height/2;
+    
+    _object1.center = CGPointMake(steelX, steelY);
+    
+    [self collision:_object1];
+
+    
 }
+
+-(void)collision:(UIImageView *)IV1{
+
+    ob1 = _object1.frame;
+    ob2 = _object2.frame;
+    ob3 = _object3.frame;
+    ob4 = _object4.frame;
+    ob5 = _object5.frame;
+    
+    
+    [self coll1:IV1];
+}
+
+-(void)coll1:(UIImageView *)IV{
+    
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        
+        NSLog(@"true");
+        IV.center = CGPointMake(IV.center.x,IV.center.y -80);
+        [self coll2:IV];
+        
+    }else{
+        NSLog(@"false");
+    }
+}
+
+-(void)coll2:(UIImageView *)IV2{
+    
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        
+        NSLog(@"true again");
+        IV2.center = CGPointMake(IV2.center.x,IV2.center.y -80);
+    }else{
+        NSLog(@"false again");
+    }
+}
+
 -(void)initObject2{
     int r = arc4random_uniform(320) ;
-    _object2.center = CGPointMake(r, -_object2.frame.size.height/2);
+    int h = -_object2.frame.size.height/2;
+    _object2.center = CGPointMake(r, h);
+    [self collision:_object2];
 }
+
 -(void)initObject3{
     int r = arc4random_uniform(320) ;
     _object3.center = CGPointMake(r, -_object3.frame.size.height/2);
+    [self collision:_object3];
 }
+
 -(void)initObject4{
-    int r = arc4random_uniform(320) ;
+    int r = arc4random_uniform(320);
     _object4.center = CGPointMake(r, -_object4.frame.size.height/2);
+    [self collision:_object4];
 }
 -(void)initObject5{
-    int r = arc4random_uniform(320) ;
+    int r = arc4random_uniform(320);
     _object5.center = CGPointMake(r, -_object5.frame.size.height/2);
+    [self collision:_object5];
 }
+
 
 
 #pragma mark - AdMob Banner

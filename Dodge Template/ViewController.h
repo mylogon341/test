@@ -14,15 +14,24 @@
 
 @interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>{
     float speed;
+    NSArray * objectsArray;
+
+    CGRect ob1;
+    CGRect ob2;
+    CGRect ob3;
+    CGRect ob4;
+    CGRect ob5;
+    
+
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *hero;
 
-@property (weak, nonatomic) IBOutlet UIImageView *object1;
-@property (weak, nonatomic) IBOutlet UIImageView *object2;
-@property (weak, nonatomic) IBOutlet UIImageView *object3;
-@property (weak, nonatomic) IBOutlet UIImageView *object4;
-@property (weak, nonatomic) IBOutlet UIImageView *object5;
+@property (strong, nonatomic) IBOutlet UIImageView *object1;
+@property (strong, nonatomic) IBOutlet UIImageView *object2;
+@property (strong, nonatomic) IBOutlet UIImageView *object3;
+@property (strong, nonatomic) IBOutlet UIImageView *object4;
+@property (strong, nonatomic) IBOutlet UIImageView *object5;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet GADBannerView *banner;
 @property (weak, nonatomic) IBOutlet UIView *gameoverView;

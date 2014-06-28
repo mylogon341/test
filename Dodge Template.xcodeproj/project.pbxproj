@@ -112,7 +112,7 @@
 		AC62524B192BEB5800034F59 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		AC62524D192BEB6500034F59 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AC62524F192BEB7200034F59 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		ACF24A3B192BE96100DCAC59 /* Dodge Template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dodge Template.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACF24A3B192BE96100DCAC59 /* BroFist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BroFist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF24A3E192BE96100DCAC59 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ACF24A40192BE96100DCAC59 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ACF24A42192BE96100DCAC59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -263,7 +263,7 @@
 		ACF24A3C192BE96100DCAC59 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ACF24A3B192BE96100DCAC59 /* Dodge Template.app */,
+				ACF24A3B192BE96100DCAC59 /* BroFist.app */,
 				ACF24A5C192BE96100DCAC59 /* Dodge TemplateTests.xctest */,
 			);
 			name = Products;
@@ -372,7 +372,7 @@
 			);
 			name = "Dodge Template";
 			productName = "Dodge Template";
-			productReference = ACF24A3B192BE96100DCAC59 /* Dodge Template.app */;
+			productReference = ACF24A3B192BE96100DCAC59 /* BroFist.app */;
 			productType = "com.apple.product-type.application";
 		};
 		ACF24A5B192BE96100DCAC59 /* Dodge TemplateTests */ = {
@@ -581,7 +581,7 @@
 					"\"$(PROJECT_DIR)/Dodge Template/AdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BroFist;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -685,7 +685,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Marko Popov (RF7SSPLW85)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dodge Template/Dodge Template-Prefix.pch";
 				INFOPLIST_FILE = "Dodge Template/Dodge Template-Info.plist";
@@ -696,7 +696,7 @@
 					"\"$(PROJECT_DIR)/Dodge Template/AdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BroFist;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -719,7 +719,7 @@
 					"\"$(PROJECT_DIR)/Dodge Template/AdMob\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BroFist;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
