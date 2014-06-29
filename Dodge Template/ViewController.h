@@ -15,7 +15,8 @@
 @interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>{
     float speed;
     NSArray * objectsArray;
-
+    IBOutlet UIButton *credits;
+    IBOutlet UIButton *highscoreButton;
     CGRect ob1;
     CGRect ob2;
     CGRect ob3;

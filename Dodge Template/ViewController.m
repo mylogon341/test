@@ -52,10 +52,10 @@ int lol;
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
 #warning adUnitID here
-    
+        //  self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
+
     objectsArray = [NSArray arrayWithObjects:_object1,_object2,_object3,_object4,_object5, nil];
     
-    //  self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
     self.banner.delegate = self;
     self.banner.rootViewController = self;
     [self.banner loadRequest: [GADRequest request]];
@@ -115,7 +115,6 @@ int lol;
     _scoreLabel.text = @"0";
     
     
-    
     difficulty = 4.0;
     
     if(gameTimer)
@@ -123,7 +122,7 @@ int lol;
         [gameTimer invalidate];
         gameTimer = nil;
     }
-    [self initObject1];
+    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
     [self initObject2];
     [self initObject3];
     [self initObject4];
@@ -174,11 +173,11 @@ int lol;
         
     }
     
-    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
-    [self initObject2];
-    [self initObject3];
-    [self initObject4];
-    [self initObject5];
+//    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
+//    [self initObject2];
+//    [self initObject3];
+//    [self initObject4];
+//    [self initObject5];
     
     [UIView animateWithDuration: 0.6f
                           delay: 0.3f
@@ -190,6 +189,7 @@ int lol;
                          [self play:self];
                      }];
     
+    
     gameState = kGameStateStart;
 }
 
@@ -200,7 +200,7 @@ int lol;
 #pragma mark - GAME
 -(void)gameLoop{
     
-    if (score < 10) {
+    if (score < 10 && gameState == kGameStateStart) {
         speed = 1;
     }
     if (score >= 10 && score < 20) {
@@ -214,6 +214,10 @@ int lol;
     }
     if (score >= 40) {
         speed = 3;
+    }
+    
+    if (gameState == kGameStateOver) {
+        speed = 5;
     }
     
     
@@ -329,6 +333,7 @@ int lol;
 #pragma mark - GAME OVER
 -(void)gameOver{
     _scoreLabel.hidden = YES;
+
     
     NSString *path  = [[NSBundle mainBundle] pathForResource:@"deadSound" ofType:@"mp3"];
     NSURL *pathURL = [NSURL fileURLWithPath : path];
@@ -413,7 +418,10 @@ int lol;
                          
                      }];
     
+    CGPoint creditPoint = CGPointMake(highscoreButton.frame.origin.x + highscoreButton.frame.size.width/2, _gameoverView.frame.size.height +10);
     
+    [_gameoverView addSubview:credits];
+    credits.center = creditPoint;
     
     
     
@@ -458,7 +466,7 @@ int lol;
 -(void)coll1:(UIImageView *)IV{
     
     if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
-        
+        NSLog(@"collision1");
         IV.center = CGPointMake(IV.center.x,IV.center.y -80);
         [self coll2:IV];
    
@@ -468,7 +476,7 @@ int lol;
 -(void)coll2:(UIImageView *)IV2{
     
     if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
-        
+        NSLog(@"collision2");
         IV2.center = CGPointMake(IV2.center.x,IV2.center.y -80);
     }
 }

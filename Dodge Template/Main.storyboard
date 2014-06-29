@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -169,6 +170,17 @@
                                         <rect key="frame" x="-17" y="-28" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3vi-Cw-4cf">
+                                        <rect key="frame" x="187" y="248" width="47" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="credits">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="2m1-QN-nlA" kind="modal" id="OIR-jh-YVj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connecting" id="Ldu-PR-Nhi">
@@ -196,9 +208,11 @@
                         <outlet property="banner" destination="Gra-Hl-wJf" id="LgO-ie-G2l"/>
                         <outlet property="bestScore" destination="hyd-f5-2Cg" id="12q-JR-JSb"/>
                         <outlet property="connecting" destination="Ldu-PR-Nhi" id="wNY-nZ-aEK"/>
+                        <outlet property="credits" destination="3vi-Cw-4cf" id="SDc-5t-XRx"/>
                         <outlet property="finalScore" destination="xon-ah-Gdu" id="NOs-pt-jRV"/>
                         <outlet property="gameoverView" destination="9Sh-yk-URk" id="7Tx-Rs-Q5p"/>
                         <outlet property="hero" destination="WbK-EQ-z91" id="vB9-d2-Nk6"/>
+                        <outlet property="highscoreButton" destination="8Pm-I6-Osb" id="taj-ic-oh4"/>
                         <outlet property="object1" destination="YOy-ZB-Mda" id="php-hu-yBv"/>
                         <outlet property="object2" destination="ltZ-1C-u5q" id="jfr-xQ-Sme"/>
                         <outlet property="object3" destination="jNc-5P-beZ" id="Uqb-KZ-udC"/>
@@ -211,6 +225,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-320" y="378"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ul4-k3-7qf">
+            <objects>
+                <viewController id="2m1-QN-nlA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DzF-Ce-jGq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wPV-qQ-KiP">
+                                <rect key="frame" x="13" y="5" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" id="F7G-pM-34t"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="prefersStatusBarHidden" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwk-Fz-2DM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="134" y="378"/>
         </scene>
     </scenes>
     <resources>
