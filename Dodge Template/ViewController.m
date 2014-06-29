@@ -411,11 +411,11 @@ int lol;
     
     if(UI_USER_INTERFACE_IDIOM() == UI_USER_INTERFACE_IDIOM()){
         if(screenSize.height >480.0f){
-            gameOver= CGRectMake(20,88,280,286);
+            gameOver= CGRectMake(20,88,280,400);
             
         }
         else{
-            gameOver= CGRectMake(20,57,280,286);
+            gameOver= CGRectMake(20,57,280,400);
         }
         
     }
