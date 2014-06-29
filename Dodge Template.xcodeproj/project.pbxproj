@@ -31,6 +31,7 @@
 		189350D4195EE997001903AF /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350C4195EE997001903AF /* iTunesArtwork@2x.png */; };
 		189350D6195EED87001903AF /* i5.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350D5195EED87001903AF /* i5.png */; };
 		189350D8195EED8C001903AF /* i4-4s.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350D7195EED8C001903AF /* i4-4s.png */; };
+		3C055FD41960CEEB00D4836E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C055FD31960CEEB00D4836E /* GameViewController.m */; };
 		3C937346195DD96900D22E55 /* MylogonAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C937345195DD96900D22E55 /* MylogonAudio.m */; };
 		AC625243192BEAE000034F59 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC62523C192BEAE000034F59 /* GameCenterManager.m */; };
 		AC625244192BEAE000034F59 /* NSDataAES256.m in Sources */ = {isa = PBXBuildFile; fileRef = AC62523E192BEAE000034F59 /* NSDataAES256.m */; };
@@ -98,6 +99,8 @@
 		189350C4195EE997001903AF /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		189350D5195EED87001903AF /* i5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i5.png; sourceTree = "<group>"; };
 		189350D7195EED8C001903AF /* i4-4s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "i4-4s.png"; sourceTree = "<group>"; };
+		3C055FD21960CEEB00D4836E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		3C055FD31960CEEB00D4836E /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		3C937344195DD96900D22E55 /* MylogonAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MylogonAudio.h; sourceTree = "<group>"; };
 		3C937345195DD96900D22E55 /* MylogonAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MylogonAudio.m; sourceTree = "<group>"; };
 		AC62523B192BEAE000034F59 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
@@ -292,6 +295,8 @@
 		ACF24A44192BE96100DCAC59 /* Dodge Template */ = {
 			isa = PBXGroup;
 			children = (
+				3C055FD21960CEEB00D4836E /* GameViewController.h */,
+				3C055FD31960CEEB00D4836E /* GameViewController.m */,
 				F5C33CBA19490216008426D2 /* AdMob */,
 				ACF24A4D192BE96100DCAC59 /* AppDelegate.h */,
 				ACF24A4E192BE96100DCAC59 /* AppDelegate.m */,
@@ -482,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C055FD41960CEEB00D4836E /* GameViewController.m in Sources */,
 				AC625246192BEAE000034F59 /* ViewController.m in Sources */,
 				ACF24A4F192BE96100DCAC59 /* AppDelegate.m in Sources */,
 				3C937346195DD96900D22E55 /* MylogonAudio.m in Sources */,

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -18,7 +17,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object1" image="steelFIST" id="YOy-ZB-Mda">
-                                <rect key="frame" x="-27" y="-30" width="90" height="90"/>
+                                <rect key="frame" x="-180" y="-30" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="object2" image="brofist" id="ltZ-1C-u5q">
@@ -171,15 +170,12 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3vi-Cw-4cf">
-                                        <rect key="frame" x="187" y="248" width="47" height="30"/>
+                                        <rect key="frame" x="120" y="301" width="60" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="credits">
+                                        <state key="normal" title="Credits">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="2m1-QN-nlA" kind="modal" id="OIR-jh-YVj"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </view>
@@ -220,36 +216,37 @@
                         <outlet property="object5" destination="s9f-7V-yhg" id="Zx2-V6-pPy"/>
                         <outlet property="scoreLabel" destination="eEG-Sh-phx" id="l2d-2H-lSb"/>
                         <outlet property="titleView" destination="a6t-iE-pt9" id="PKg-4G-iX9"/>
+                        <segue destination="2m1-QN-nlA" kind="modal" identifier="Credits" id="ltm-KA-teT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-320" y="378"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="ul4-k3-7qf">
             <objects>
-                <viewController id="2m1-QN-nlA" sceneMemberID="viewController">
+                <viewController id="2m1-QN-nlA" customClass="GameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DzF-Ce-jGq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wPV-qQ-KiP">
-                                <rect key="frame" x="13" y="5" width="35" height="30"/>
+                                <rect key="frame" x="13" y="19" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="modal" id="F7G-pM-34t"/>
+                                    <action selector="back:" destination="2m1-QN-nlA" eventType="touchUpInside" id="AX8-u3-x4n"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="prefersStatusBarHidden" value="YES"/>
-                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="Menu" id="eyR-6H-uIA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bwk-Fz-2DM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

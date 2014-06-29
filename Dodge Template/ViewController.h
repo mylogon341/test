@@ -11,11 +11,13 @@
 #import "GameCenterManager.h"
 #import "MylogonAudio.h"
 
+BOOL go;
 
 @interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>{
     float speed;
     NSArray * objectsArray;
     IBOutlet UIButton *credits;
+    UIButton * button;
     IBOutlet UIButton *highscoreButton;
     CGRect ob1;
     CGRect ob2;
@@ -48,7 +50,7 @@
 - (IBAction)highscores:(id)sender;
 - (IBAction)noAds:(id)sender;
 - (IBAction)restore:(id)sender;
-
+- (void)gameOver;
 
 
 @end

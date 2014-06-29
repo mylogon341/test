@@ -60,6 +60,8 @@ int lol;
     self.banner.rootViewController = self;
     [self.banner loadRequest: [GADRequest request]];
     
+        gameState = kGameStateMenu;
+
     
     _scoreLabel.font = [UIFont fontWithName:@"debussy" size:35];
     _scoreLabel.textColor = [UIColor whiteColor];
@@ -70,7 +72,6 @@ int lol;
     _bestScore.font = [UIFont fontWithName:@"debussy" size:20];
     _bestScore.textColor = [UIColor blackColor];
   
-    gameState = kGameStateMenu;
     
     [self menu];
 }
@@ -87,6 +88,8 @@ int lol;
     [self resetHero];
     CGRect menu;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    
+    go = NO;
     
     if(UI_USER_INTERFACE_IDIOM() == UI_USER_INTERFACE_IDIOM()){
         if(screenSize.height >480.0f){
@@ -106,6 +109,8 @@ int lol;
                          
                      }];
     
+    [credits addTarget:self action:@selector(credits) forControlEvents:UIControlEventTouchUpInside];
+
     
 }
 - (IBAction)play:(id)sender {
@@ -122,7 +127,7 @@ int lol;
         [gameTimer invalidate];
         gameTimer = nil;
     }
-    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(initObject1) withObject:nil afterDelay:2.5];
     [self initObject2];
     [self initObject3];
     [self initObject4];
@@ -162,6 +167,7 @@ int lol;
 
 - (IBAction)retry:(id)sender {
     CGRect done;
+    go = NO;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     if(UI_USER_INTERFACE_IDIOM() == UI_USER_INTERFACE_IDIOM()){
         if(screenSize.height >480.0f){
@@ -172,6 +178,9 @@ int lol;
         }
         
     }
+    
+    [button removeFromSuperview];
+
     
 //    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
 //    [self initObject2];
@@ -333,6 +342,8 @@ int lol;
 #pragma mark - GAME OVER
 -(void)gameOver{
     _scoreLabel.hidden = YES;
+    
+    go = YES;
 
     
     NSString *path  = [[NSBundle mainBundle] pathForResource:@"deadSound" ofType:@"mp3"];
@@ -418,14 +429,31 @@ int lol;
                          
                      }];
     
-    CGPoint creditPoint = CGPointMake(highscoreButton.frame.origin.x + highscoreButton.frame.size.width/2, _gameoverView.frame.size.height +10);
     
-    [_gameoverView addSubview:credits];
-    credits.center = creditPoint;
+
+    CGFloat screenWidth = screenSize.width;
     
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(credits)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Credits" forState:UIControlStateNormal];
+    button.frame = CGRectMake(screenWidth/2, _gameoverView.frame.size.height+40, 80, 40.0);
+    button.center = CGPointMake(_gameoverView.frame.size.width/2, _gameoverView.frame.size.height);
+    [_gameoverView addSubview:button];
+    [_gameoverView bringSubviewToFront:button];
     
+    [_gameoverView setUserInteractionEnabled:YES];
+    
+ //   [button addTarget:self action:@selector(credits) forControlEvents:UIControlEventTouchUpInside];
     
 }
+     
+     -(void)credits{
+         
+         [self performSegueWithIdentifier:@"Credits" sender:nil];
+         
+     }
 
 #pragma mark - INIT OBJECTS
 -(void)resetHero{
