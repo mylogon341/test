@@ -12,6 +12,7 @@
 		180ED3B2195E3ACA005BB26A /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 180ED3AD195E3ACA005BB26A /* bg.mp3 */; };
 		180ED3B3195E3ACA005BB26A /* brofist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180ED3AE195E3ACA005BB26A /* brofist@2x.png */; };
 		180ED3B4195E3ACA005BB26A /* steelFIST@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180ED3AF195E3ACA005BB26A /* steelFIST@2x.png */; };
+		181C42A71961AEC1006E8FBE /* Chempo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 181C42A61961AEC1006E8FBE /* Chempo@2x.png */; };
 		189350B3195EE3D4001903AF /* debussy.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 189350B2195EE1F2001903AF /* debussy.TTF */; };
 		189350C5195EE997001903AF /* AppIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350B5195EE997001903AF /* AppIcon29x29.png */; };
 		189350C6195EE997001903AF /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350B6195EE997001903AF /* AppIcon29x29@2x.png */; };
@@ -31,6 +32,8 @@
 		189350D4195EE997001903AF /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350C4195EE997001903AF /* iTunesArtwork@2x.png */; };
 		189350D6195EED87001903AF /* i5.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350D5195EED87001903AF /* i5.png */; };
 		189350D8195EED8C001903AF /* i4-4s.png in Resources */ = {isa = PBXBuildFile; fileRef = 189350D7195EED8C001903AF /* i4-4s.png */; };
+		18FAB6AD1960DDDF00A984CF /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FAB6AB1960DDDF00A984CF /* back@2x.png */; };
+		18FAB6AE1960DDDF00A984CF /* credits@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FAB6AC1960DDDF00A984CF /* credits@2x.png */; };
 		3C055FD41960CEEB00D4836E /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C055FD31960CEEB00D4836E /* GameViewController.m */; };
 		3C937346195DD96900D22E55 /* MylogonAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C937345195DD96900D22E55 /* MylogonAudio.m */; };
 		AC625243192BEAE000034F59 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC62523C192BEAE000034F59 /* GameCenterManager.m */; };
@@ -80,6 +83,7 @@
 		180ED3AD195E3ACA005BB26A /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
 		180ED3AE195E3ACA005BB26A /* brofist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brofist@2x.png"; sourceTree = "<group>"; };
 		180ED3AF195E3ACA005BB26A /* steelFIST@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "steelFIST@2x.png"; sourceTree = "<group>"; };
+		181C42A61961AEC1006E8FBE /* Chempo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chempo@2x.png"; sourceTree = "<group>"; };
 		189350B2195EE1F2001903AF /* debussy.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = debussy.TTF; sourceTree = "<group>"; };
 		189350B5195EE997001903AF /* AppIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon29x29.png; sourceTree = "<group>"; };
 		189350B6195EE997001903AF /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 		189350C4195EE997001903AF /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		189350D5195EED87001903AF /* i5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i5.png; sourceTree = "<group>"; };
 		189350D7195EED8C001903AF /* i4-4s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "i4-4s.png"; sourceTree = "<group>"; };
+		18FAB6AB1960DDDF00A984CF /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		18FAB6AC1960DDDF00A984CF /* credits@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "credits@2x.png"; sourceTree = "<group>"; };
 		3C055FD21960CEEB00D4836E /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		3C055FD31960CEEB00D4836E /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		3C937344195DD96900D22E55 /* MylogonAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MylogonAudio.h; sourceTree = "<group>"; };
@@ -237,7 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				189350D7195EED8C001903AF /* i4-4s.png */,
+				181C42A61961AEC1006E8FBE /* Chempo@2x.png */,
 				189350D5195EED87001903AF /* i5.png */,
+				18FAB6AB1960DDDF00A984CF /* back@2x.png */,
+				18FAB6AC1960DDDF00A984CF /* credits@2x.png */,
 				189350B4195EE997001903AF /* Icon */,
 				180ED3AB195E3ACA005BB26A /* bg-i4.png */,
 				180ED3AC195E3ACA005BB26A /* bg-i5.png */,
@@ -448,7 +457,9 @@
 				180ED3B2195E3ACA005BB26A /* bg.mp3 in Resources */,
 				189350C9195EE997001903AF /* AppIcon50x50.png in Resources */,
 				189350CC195EE997001903AF /* AppIcon57x57@2x.png in Resources */,
+				181C42A71961AEC1006E8FBE /* Chempo@2x.png in Resources */,
 				ACF24A74192BE9AC00DCAC59 /* Main.storyboard in Resources */,
+				18FAB6AD1960DDDF00A984CF /* back@2x.png in Resources */,
 				189350D2195EE997001903AF /* AppIcon76x76@2x.png in Resources */,
 				ACF24A49192BE96100DCAC59 /* InfoPlist.strings in Resources */,
 				ACF24A96192BE9D000DCAC59 /* 8-BIT WONDER.TTF in Resources */,
@@ -463,6 +474,7 @@
 				189350CD195EE997001903AF /* AppIcon60x60.png in Resources */,
 				189350D1195EE997001903AF /* AppIcon76x76.png in Resources */,
 				189350CA195EE997001903AF /* AppIcon50x50@2x.png in Resources */,
+				18FAB6AE1960DDDF00A984CF /* credits@2x.png in Resources */,
 				189350D4195EE997001903AF /* iTunesArtwork@2x.png in Resources */,
 				189350D0195EE997001903AF /* AppIcon72x72@2x.png in Resources */,
 				180ED3B0195E3ACA005BB26A /* bg-i4.png in Resources */,
@@ -576,7 +588,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Marko Popov (SS72589PZK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dodge Template/Dodge Template-Prefix.pch";
 				INFOPLIST_FILE = "Dodge Template/Dodge Template-Info.plist";
@@ -588,7 +600,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = BroFist;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4077B72F-B0BA-447F-9536-6BA7285DFBB3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;
@@ -691,7 +703,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Marko Popov (RF7SSPLW85)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dodge Template/Dodge Template-Prefix.pch";
 				INFOPLIST_FILE = "Dodge Template/Dodge Template-Info.plist";
@@ -703,7 +715,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = BroFist;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4077B72F-B0BA-447F-9536-6BA7285DFBB3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -714,7 +726,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Marko Popov (SS72589PZK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dodge Template/Dodge Template-Prefix.pch";
 				INFOPLIST_FILE = "Dodge Template/Dodge Template-Info.plist";
@@ -726,7 +738,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = BroFist;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4077B72F-B0BA-447F-9536-6BA7285DFBB3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
