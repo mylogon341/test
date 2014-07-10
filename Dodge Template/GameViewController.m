@@ -24,7 +24,9 @@
 
 -(IBAction)back:(id)sender{
     
-        [self performSegueWithIdentifier:@"Menu" sender:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+  //      [self performSegueWithIdentifier:@"Menu" sender:nil];
 }
 
 -(BOOL)prefersStatusBarHidden{

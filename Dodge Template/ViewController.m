@@ -21,6 +21,8 @@
 #define kGameStatePaused 4
 #define kGameStateOver 5
 
+#define increment 0.05
+
 
 
 @interface ViewController ()
@@ -45,14 +47,12 @@ int lol;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    speed = 2;
-    
-    [[MylogonAudio sharedInstance]playBackgroundMusic:@"bg.mp3"];
+    speed = 1;
     
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
 
-    self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
+//    self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
 
     objectsArray = [NSArray arrayWithObjects:_object1,_object2,_object3,_object4,_object5, nil];
     
@@ -127,7 +127,7 @@ int lol;
         [gameTimer invalidate];
         gameTimer = nil;
     }
-    [self performSelector:@selector(initObject1) withObject:nil afterDelay:2.5];
+    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
     [self initObject2];
     [self initObject3];
     [self initObject4];
@@ -180,7 +180,7 @@ int lol;
     }
     
     [button removeFromSuperview];
-
+    speed = 1;
     
 //    [self performSelector:@selector(initObject1) withObject:nil afterDelay:0.5];
 //    [self initObject2];
@@ -208,8 +208,11 @@ int lol;
 
 #pragma mark - GAME
 -(void)gameLoop{
+  
+    // Old System
     
-    if (score < 10 && gameState == kGameStateStart) {
+    /*
+    if (score < 10) {
         speed = 1;
     }
     if (score >= 10 && score < 20) {
@@ -224,6 +227,7 @@ int lol;
     if (score >= 40) {
         speed = 3;
     }
+    */
     
     if (gameState == kGameStateOver) {
         speed = 5;
@@ -280,21 +284,25 @@ int lol;
         if(CGRectIntersectsRect(heroRect, _object2.frame)){
             [self initObject2];
             score ++;
+            speed += increment;
         }
         
         if(CGRectIntersectsRect(heroRect, _object3.frame)){
             [self initObject3];
             score ++;
+            speed += increment;
         }
         
         if(CGRectIntersectsRect(heroRect, _object4.frame)){
             [self initObject4];
             score ++;
+            speed += increment;
         }
         
         if(CGRectIntersectsRect(heroRect, _object5.frame)){
             [self initObject5];
             score ++;
+            speed += increment;
         }
         
         
@@ -471,9 +479,9 @@ int lol;
 
 -(void)initObject1{
     int steelX = arc4random_uniform(320) ;
-    int steelY = -_object1.frame.size.height/2;
+    int steelY = -100;
     
-    _object1.center = CGPointMake(steelX, steelY);
+    _object1.center = CGPointMake(steelX, steelY);  
     
     [self collision:_object1];
 
@@ -494,9 +502,10 @@ int lol;
 
 -(void)coll1:(UIImageView *)IV{
     
+    IV.center = CGPointMake(IV.center.x, IV.center.y - 100);
+    
     if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
-        NSLog(@"collision1");
-        IV.center = CGPointMake(IV.center.x,IV.center.y -80);
+        IV.center = CGPointMake(IV.center.x,IV.center.y -100);
         [self coll2:IV];
    
     }
@@ -505,8 +514,7 @@ int lol;
 -(void)coll2:(UIImageView *)IV2{
     
     if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
-        NSLog(@"collision2");
-        IV2.center = CGPointMake(IV2.center.x,IV2.center.y -80);
+        IV2.center = CGPointMake(IV2.center.x,IV2.center.y -100);
     }
 }
 
@@ -519,18 +527,18 @@ int lol;
 
 -(void)initObject3{
     int r = arc4random_uniform(320) ;
-    _object3.center = CGPointMake(r, -_object3.frame.size.height/2);
+    _object3.center = CGPointMake(r, -_object3.frame.size.height/2 - 30);
     [self collision:_object3];
 }
 
 -(void)initObject4{
     int r = arc4random_uniform(320);
-    _object4.center = CGPointMake(r, -_object4.frame.size.height/2);
+    _object4.center = CGPointMake(r, -_object4.frame.size.height/2 - 60);
     [self collision:_object4];
 }
 -(void)initObject5{
     int r = arc4random_uniform(320);
-    _object5.center = CGPointMake(r, -_object5.frame.size.height/2);
+    _object5.center = CGPointMake(r, -_object5.frame.size.height/2 - 90);
     [self collision:_object5];
 }
 

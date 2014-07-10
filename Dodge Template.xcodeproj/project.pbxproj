@@ -306,10 +306,10 @@
 			children = (
 				3C055FD21960CEEB00D4836E /* GameViewController.h */,
 				3C055FD31960CEEB00D4836E /* GameViewController.m */,
+				AC625247192BEAF300034F59 /* Game Center Manager */,
 				F5C33CBA19490216008426D2 /* AdMob */,
 				ACF24A4D192BE96100DCAC59 /* AppDelegate.h */,
 				ACF24A4E192BE96100DCAC59 /* AppDelegate.m */,
-				AC625247192BEAF300034F59 /* Game Center Manager */,
 				AC625241192BEAE000034F59 /* ViewController.h */,
 				AC625242192BEAE000034F59 /* ViewController.m */,
 				ACF24A73192BE9AC00DCAC59 /* Main.storyboard */,

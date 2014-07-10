@@ -4,7 +4,7 @@
 //
 //  Copyright (c) 2014 Company name. All rights reserved.
 //
-
+#import "MylogonAudio.h"
 #import "AppDelegate.h"
 
 @implementation AppDelegate
@@ -12,6 +12,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[GameCenterManager sharedManager]setupManager];
+    [[MylogonAudio sharedInstance]playBackgroundMusic:@"bg.mp3"];
+
     return YES;
 }
 							
@@ -25,11 +28,13 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[MylogonAudio sharedInstance]pauseBackgroundMusic];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[MylogonAudio sharedInstance]resumeBackgroundMusic];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

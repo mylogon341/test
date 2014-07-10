@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -177,7 +178,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="2m1-QN-nlA" kind="modal" modalTransitionStyle="crossDissolve" id="Skn-Ta-fgg"/>
+                                            <segue destination="2m1-QN-nlA" kind="modal" id="fQV-9M-TfO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -202,7 +203,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics">
+                        <size key="portraitSize" width="320" height="480"/>
+                        <size key="landscapeSize" width="480" height="320"/>
+                    </simulatedScreenMetrics>
                     <connections>
                         <outlet property="banner" destination="Gra-Hl-wJf" id="LgO-ie-G2l"/>
                         <outlet property="bestScore" destination="hyd-f5-2Cg" id="12q-JR-JSb"/>
@@ -218,7 +222,6 @@
                         <outlet property="object5" destination="s9f-7V-yhg" id="Zx2-V6-pPy"/>
                         <outlet property="scoreLabel" destination="eEG-Sh-phx" id="l2d-2H-lSb"/>
                         <outlet property="titleView" destination="a6t-iE-pt9" id="PKg-4G-iX9"/>
-                        <segue destination="2m1-QN-nlA" kind="modal" identifier="Credits" modalTransitionStyle="crossDissolve" id="ltm-KA-teT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -306,9 +309,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="Menu" modalTransitionStyle="crossDissolve" id="eyR-6H-uIA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bwk-Fz-2DM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,13 +334,13 @@
         <image name="steelFIST" width="75" height="75"/>
         <image name="title" width="510" height="195"/>
     </resources>
-    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="ltm-KA-teT"/>
-    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
