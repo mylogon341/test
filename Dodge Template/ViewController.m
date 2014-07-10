@@ -2,17 +2,17 @@
 //  ViewController.m
 //  Dodge Template
 //
-//  Copyright (c) 2014 Company name. All rights reserved.
+//  Copyright (c) 2014 Chempo.com. All rights reserved.
 //
 
 #import "ViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-#define kRemoveAdsProductIdentifier @"DodgeBalls"
+#define kRemoveAdsProductIdentifier @"BrofistNoAds"
 
-#define kLeaderboardIdentifier @"Dodge.Scoreboard￼￼"
+#define kLeaderboardIdentifier @"bfld"
 
-#define kIDRateApp @"https://itunes.apple.com/us/app/dodge-the-red-balls/id881951204?ls=1&mt=8"
+#define kIDRateApp @"https://itunes.apple.com/us/app/brofist-game-how-many-brofists/id894589832?ls=1&mt=8"
 
 
 #define kGameStateMenu 1
@@ -45,14 +45,14 @@ int lol;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    speed = 1;
+    speed = 2;
     
     [[MylogonAudio sharedInstance]playBackgroundMusic:@"bg.mp3"];
     
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
-#warning adUnitID here
-        //  self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
+
+    self.banner.adUnitID = @"ca-app-pub-4527607880928611/9436906689";
 
     objectsArray = [NSArray arrayWithObjects:_object1,_object2,_object3,_object4,_object5, nil];
     
@@ -109,7 +109,7 @@ int lol;
                          
                      }];
     
-    [credits addTarget:self action:@selector(credits) forControlEvents:UIControlEventTouchUpInside];
+   // [credits addTarget:self action:@selector(credits) forControlEvents:UIControlEventTouchUpInside];
 
     
 }
@@ -346,12 +346,12 @@ int lol;
     go = YES;
 
     
-    NSString *path  = [[NSBundle mainBundle] pathForResource:@"deadSound" ofType:@"mp3"];
+   /*  NSString *path  = [[NSBundle mainBundle] pathForResource:@"deadSound" ofType:@"mp3"];
     NSURL *pathURL = [NSURL fileURLWithPath : path];
     
-    SystemSoundID audioEffect;
+   SystemSoundID audioEffect;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-    AudioServicesPlaySystemSound(audioEffect);
+    AudioServicesPlaySystemSound(audioEffect);*/
     
     CGRect heroRect;
     
@@ -431,7 +431,7 @@ int lol;
     
     
 
-    CGFloat screenWidth = screenSize.width;
+ /*   CGFloat screenWidth = screenSize.width;
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self
@@ -439,7 +439,8 @@ int lol;
      forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Credits" forState:UIControlStateNormal];
     button.frame = CGRectMake(screenWidth/2, _gameoverView.frame.size.height+40, 80, 40.0);
-    button.center = CGPointMake(_gameoverView.frame.size.width/2, _gameoverView.frame.size.height);
+    button.center = CGPointMake(_gameoverView.frame.size.width/2, _gameoverView.frame.size.height);*/
+    
     [_gameoverView addSubview:button];
     [_gameoverView bringSubviewToFront:button];
     
@@ -448,13 +449,13 @@ int lol;
  //   [button addTarget:self action:@selector(credits) forControlEvents:UIControlEventTouchUpInside];
     
 }
-     
+ /*
      -(void)credits{
          
          [self performSegueWithIdentifier:@"Credits" sender:nil];
          
      }
-
+*/
 #pragma mark - INIT OBJECTS
 -(void)resetHero{
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
@@ -579,7 +580,7 @@ int lol;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"noads"] != nil){
         if([[defaults objectForKey:@"noads"]isEqualToString:@"YES"]){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops."
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bought"
                                                             message:@"You've already bought this."
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
