@@ -2,17 +2,17 @@
 //  ViewController.m
 //  Dodge Template
 //
-//  Copyright (c) 2014 Company name. All rights reserved.
+//  Copyright (c) 2014 Chempo.com. All rights reserved.
 //
 
 #import "ViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-#define kRemoveAdsProductIdentifier @"DodgeBalls"
+#define kRemoveAdsProductIdentifier @"BrofistNoAds"
 
-#define kLeaderboardIdentifier @"Dodge.Scoreboard￼￼"
+#define kLeaderboardIdentifier @"bfld"
 
-#define kIDRateApp @"https://itunes.apple.com/us/app/dodge-the-red-balls/id881951204?ls=1&mt=8"
+#define kIDRateApp @"https://itunes.apple.com/us/app/brofist-game-how-many-brofists/id894589832?ls=1&mt=8"
 
 
 #define kGameStateMenu 1
@@ -20,6 +20,11 @@
 #define kGameStateRunning 3
 #define kGameStatePaused 4
 #define kGameStateOver 5
+
+#define increment 0.05
+
+#define adID @"ca-app-pub-4527607880928611/9436906689";
+
 
 
 
@@ -45,30 +50,33 @@ int lol;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    speed = 1;
+    
+    startScore = 0;
+    
     _connecting.hidden = YES;
     [[GameCenterManager sharedManager] setDelegate:self];
     
-  //  self.banner.adUnitID = @"ca-app-pub-2530230787721578/3469134445";
+    self.banner.adUnitID = adID;
+    
+    objectsArray = [NSArray arrayWithObjects:_object1,_object2,_object3,_object4,_object5, nil];
+    
     self.banner.delegate = self;
     self.banner.rootViewController = self;
     [self.banner loadRequest: [GADRequest request]];
     
-    _scoreLabel.font = [UIFont fontWithName:@"8BIT WONDER" size:35];
+    gameState = kGameStateMenu;
+    
+    
+    _scoreLabel.font = [UIFont fontWithName:@"debussy" size:35];
     _scoreLabel.textColor = [UIColor whiteColor];
     
-    _finalScore.font = [UIFont fontWithName:@"8BIT WONDER" size:20];
+    _finalScore.font = [UIFont fontWithName:@"debussy" size:20];
     _finalScore.textColor = [UIColor grayColor];
     
-    _bestScore.font = [UIFont fontWithName:@"8BIT WONDER" size:20];
+    _bestScore.font = [UIFont fontWithName:@"debussy" size:20];
     _bestScore.textColor = [UIColor blackColor];
     
-    [self initObject1];
-    [self initObject2];
-    [self initObject3];
-    [self initObject4];
-    [self initObject5];
-    
-    gameState = kGameStateMenu;
     
     [self menu];
 }
@@ -85,6 +93,8 @@ int lol;
     [self resetHero];
     CGRect menu;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    
+    go = NO;
     
     if(UI_USER_INTERFACE_IDIOM() == UI_USER_INTERFACE_IDIOM()){
         if(screenSize.height >480.0f){
@@ -104,13 +114,16 @@ int lol;
                          
                      }];
     
+    // [credits addTarget:self action:@selector(credits) forControlEvents:UIControlEventTouchUpInside];
+    
     
 }
 - (IBAction)play:(id)sender {
     _instructions.hidden = YES;
     _scoreLabel.hidden = NO;
-    score = 0;
+    score = startScore;
     _scoreLabel.text = @"0";
+    
     
     difficulty = 4.0;
     
@@ -119,7 +132,7 @@ int lol;
         [gameTimer invalidate];
         gameTimer = nil;
     }
-    [self initObject1];
+    [self performSelector:@selector(initObject1) withObject:nil afterDelay:1.5];
     [self initObject2];
     [self initObject3];
     [self initObject4];
@@ -148,13 +161,18 @@ int lol;
                          gameTimer = [NSTimer scheduledTimerWithTimeInterval:0.007 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
                          
                      }];
+    
+    [self performSelector:@selector(move) withObject:nil afterDelay:1];
 }
+
+
 - (IBAction)highscores:(id)sender {
     [self showLeaderboard];
 }
 
 - (IBAction)retry:(id)sender {
     CGRect done;
+    go = NO;
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     if(UI_USER_INTERFACE_IDIOM() == UI_USER_INTERFACE_IDIOM()){
         if(screenSize.height >480.0f){
@@ -166,6 +184,8 @@ int lol;
         
     }
     
+    [button removeFromSuperview];
+    speed = 1;
     
     [UIView animateWithDuration: 0.6f
                           delay: 0.3f
@@ -177,6 +197,7 @@ int lol;
                          [self play:self];
                      }];
     
+    
     gameState = kGameStateStart;
 }
 
@@ -187,95 +208,43 @@ int lol;
 #pragma mark - GAME
 -(void)gameLoop{
     
-    if(score > 15){
-        difficulty = 5.0;
-    }
-    if(score > 50){
-        difficulty = 5.5;
-    }
-    if(score >75){
-        difficulty = 6.0;
-    }
-    if(score > 115){
-        difficulty = 6.5;
-    }
-    if(score > 150){
-        difficulty = 7.0;
+    if (gameState == kGameStateOver) {
+        speed = 5;
     }
     
-    _object1.center = CGPointMake(_object1.center.x, _object1.center.y + difficulty);
-    _object2.center = CGPointMake(_object2.center.x, _object2.center.y +difficulty);
-    _object3.center = CGPointMake(_object3.center.x, _object3.center.y + difficulty);
-    _object4.center = CGPointMake(_object4.center.x, _object4.center.y +difficulty);
-    _object5.center = CGPointMake(_object5.center.x, _object5.center.y +difficulty);
+    
+    _object1.center = CGPointMake(_object1.center.x, _object1.center.y + speed);
+    _object2.center = CGPointMake(_object2.center.x, _object2.center.y + speed);
+    _object3.center = CGPointMake(_object3.center.x, _object3.center.y + speed);
+    _object4.center = CGPointMake(_object4.center.x, _object4.center.y + speed);
+    _object5.center = CGPointMake(_object5.center.x, _object5.center.y + speed);
     
     
     if(gameState == kGameStateRunning ){
         
-        //Update Asteroids and check collisions
         
-        //Move the objects down
-        
-        //Check if the object is off the screen, if so reset the position
         if(_object1.center.y > 660){
-            score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            //if the asteroid is successfully dodged, update the score
             [self initObject1];
-            
         }
+        
         if(_object2.center.y > 660){
-            score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            [self initObject2];
-            
-            //if the asteroid is successfully dodged, update the score
+            gameState = kGameStateOver;
+            [self gameOver];
         }
+        
         if(_object3.center.y > 660){
-            score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            [self initObject3];
-            
-            //if the asteroid is successfully dodged, update the score
+            gameState = kGameStateOver;
+            [self gameOver];
         }
+        
         if(_object4.center.y > 660){
-            score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            //if the asteroid is successfully dodged, update the score
-            [self initObject4];
-            
+            gameState = kGameStateOver;
+            [self gameOver];
         }
+        
         if(_object5.center.y > 660){
-            score++;
-            NSString *path  = [[NSBundle mainBundle] pathForResource:@"point" ofType:@"mp3"];
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            
-            SystemSoundID audioEffect;
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            AudioServicesPlaySystemSound(audioEffect);
-            //if the asteroid is successfully dodged, update the score
-            [self initObject5];
-            
+            gameState = kGameStateOver;
+            [self gameOver];
         }
         
         //check collision
@@ -285,29 +254,29 @@ int lol;
             gameState = kGameStateOver;
             [self gameOver];
         }
+        
         if(CGRectIntersectsRect(heroRect, _object2.frame)){
-            
-            gameState = kGameStateOver;
-            [self gameOver];
-            
+            [self initObject2];
+            score ++;
+            speed += increment;
         }
+        
         if(CGRectIntersectsRect(heroRect, _object3.frame)){
-            
-            gameState = kGameStateOver;
-            [self gameOver];
-            
+            [self initObject3];
+            score ++;
+            speed += increment;
         }
+        
         if(CGRectIntersectsRect(heroRect, _object4.frame)){
-            
-            gameState = kGameStateOver;
-            [self gameOver];
-            
+            [self initObject4];
+            score ++;
+            speed += increment;
         }
+        
         if(CGRectIntersectsRect(heroRect, _object5.frame)){
-            
-            gameState = kGameStateOver;
-            [self gameOver];
-            
+            [self initObject5];
+            score ++;
+            speed += increment;
         }
         
         _scoreLabel.text = [NSString stringWithFormat:@"%d", score];
@@ -318,34 +287,32 @@ int lol;
     }
 }
 
+
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //moves hero
-    [self touchesMoved:touches withEvent:event];
-}
-
--(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    
     UITouch *touch = [[event allTouches]anyObject];
     CGPoint location = [touch locationInView:touch.view];
-    CGPoint xLocation = CGPointMake(location.x, _hero.center.y);
-    if(location.x > _hero.center.x){
-        _hero.image = [UIImage imageNamed:@"hero.png"];
-    }
-    else{
-        _hero.image = [UIImage imageNamed:@"hero.png"];
-    }
-    _hero.center=xLocation;
+    _hero.center = CGPointMake(location.x, location.y+30);
+    
+    [self performSelector:@selector(move) withObject:nil afterDelay:0.03];
+}
+
+-(void) move{
+    _hero.center = CGPointMake(-100, -100);
+}
+
+
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    _hero.center = CGPointMake(-100, -100);
 }
 
 #pragma mark - GAME OVER
 -(void)gameOver{
     _scoreLabel.hidden = YES;
     
-    NSString *path  = [[NSBundle mainBundle] pathForResource:@"deadSound" ofType:@"mp3"];
-    NSURL *pathURL = [NSURL fileURLWithPath : path];
+    go = YES;
     
-    SystemSoundID audioEffect;
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-    AudioServicesPlaySystemSound(audioEffect);
     
     CGRect heroRect;
     
@@ -405,11 +372,11 @@ int lol;
     
     if(UI_USER_INTERFACE_IDIOM() == UI_USER_INTERFACE_IDIOM()){
         if(screenSize.height >480.0f){
-            gameOver= CGRectMake(20,88,280,286);
+            gameOver= CGRectMake(20,88,280,400);
             
         }
         else{
-            gameOver= CGRectMake(20,57,280,286);
+            gameOver= CGRectMake(20,57,280,400);
         }
         
     }
@@ -423,11 +390,230 @@ int lol;
                          
                      }];
     
+    socialAlert = [[defaults objectForKey:@"alert"]intValue];
+    NSLog(@"%i",socialAlert);
     
+    //   socialAlert = 1;
     
+    [self freePointsLoad];
+    
+    [_gameoverView addSubview:button];
+    [_gameoverView bringSubviewToFront:button];
+    
+    [_gameoverView setUserInteractionEnabled:YES];
     
     
 }
+
+-(IBAction)freePoints:(id)sender{
+    socialAlert = 1;
+    [self freePointsLoad];
+}
+
+-(void)freePointsLoad{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    socialAlert = [[defaults objectForKey:@"alert"]intValue];
+    NSLog(@"%i",socialAlert);
+    
+    //   socialAlert = 1;
+    
+    if (socialAlert != 2) {
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Share me!" message:@"Share me through Social Media and start with 50 points on your next turn!" delegate:self cancelButtonTitle:@"Sure!" otherButtonTitles:@"Not this time", @"NEVER!!!", nil];
+        
+        alert.tag = 101;
+        
+        
+        [alert show];
+        
+    }
+    
+}
+
+
+-(void)socialShit{
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Share with a bro" message:@"...and how would you like to share?" delegate:self cancelButtonTitle:@"I've changed my mind.." otherButtonTitles:@"Facebook!",@"Twitter!", nil];
+    
+    alert.tag = 202;
+    
+    [alert show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSLog(@"%li",(long)buttonIndex);
+    
+    if (alertView.tag == 101) {
+        
+        //Sure = 0
+        //Not this time = 1
+        //Never = 2
+        
+        if (buttonIndex == 1) {
+            [defaults setValue:@"1" forKey:@"alert"];
+            [defaults synchronize];
+        }
+        
+        if (buttonIndex == 2) {
+            [defaults setValue:@"2" forKey:@"alert"];
+            [defaults synchronize];
+        }
+        
+        if (buttonIndex == 0) {
+            
+            [self socialShit];
+            
+        }
+    }
+    
+    if (alertView.tag == 202) {
+        
+        //facebook
+        if (buttonIndex == 1) {
+            
+            
+            // Check if the Facebook app is installed and we can present the share dialog
+            FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
+            params.link = [NSURL URLWithString:@"https://developers.facebook.com/docs/ios/share/"];
+            
+            // If the Facebook app is installed and we can present the share dialog
+            if ([FBDialogs canPresentShareDialogWithParams:params]) {
+                
+                // Present share dialog
+                [FBDialogs presentShareDialogWithLink:params.link
+                                              handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                                  if(error) {
+                                                      // An error occurred, we need to handle the error
+                                                      // See: https://developers.facebook.com/docs/ios/errors
+                                                      NSLog(@"Error publishing story: %@", error.description);
+                                                  } else {
+                                                      // Success
+                                                      NSLog(@"result %@", results);
+                                                  }
+                                              }];
+                
+                // If the Facebook app is NOT installed and we can't present the share dialog
+            } else {
+                // FALLBACK: publish just a link using the Feed dialog
+                
+                // Put together the dialog parameters
+                NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                               @"BroFist", @"name",
+                                               @"How Many BroFists Can You Give?", @"caption",
+                                               @"Get BroFist today for free on iOS and compete against friends. Who will get the global High Score?!", @"description",
+                                               @"https://itunes.apple.com/us/app/brofist-game-how-many-brofists/id894589832?mt=8", @"link",
+                                               @"http://a5.mzstatic.com/us/r30/Purple4/v4/c4/77/28/c477287c-ba75-44e0-faca-4a65147b186a/mzl.zdzbmeob.175x175-75.jpg", @"picture",
+                                               nil];
+                
+                
+                [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                                       parameters:params
+                                                          handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                              if (error) {
+                                                                  // An error occurred, we need to handle the error
+                                                                  // See: https://developers.facebook.com/docs/ios/errors
+                                                                  NSLog(@"Error publishing story: %@", error.description);
+                                                              } else {
+                                                                  if (result == FBWebDialogResultDialogNotCompleted) {
+                                                                      // User canceled.
+                                                                      NSLog(@"User cancelled.");
+                                                                  } else {
+                                                                      // Handle the publish feed callback
+                                                                      NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                                      
+                                                                      if (![urlParams valueForKey:@"post_id"]) {
+                                                                          // User canceled.
+                                                                          NSLog(@"User cancelled.");
+                                                                          
+                                                                      } else {
+                                                                          // User clicked the Share button
+                                                                          startScore = 50;
+                                                                          NSString *result = [NSString stringWithFormat: @"Posted story, id: %@", [urlParams valueForKey:@"post_id"]];
+                                                                          NSLog(@"result %@", result);
+                                                                      }
+                                                                  }
+                                                              }
+                                                          }];
+            }
+        }
+        
+    
+
+//twitter
+if (buttonIndex == 2) {
+    {
+        //  Create an instance of the Tweet Sheet
+        SLComposeViewController *tweetSheet = [SLComposeViewController
+                                               composeViewControllerForServiceType:
+                                               SLServiceTypeTwitter];
+        
+        // Sets the completion handler.  Note that we don't know which thread the
+        // block will be called on, so we need to ensure that any required UI
+        // updates occur on the main queue
+        tweetSheet.completionHandler = ^(SLComposeViewControllerResult result) {
+            switch(result) {
+                    //  This means the user cancelled without sending the Tweet
+                case SLComposeViewControllerResultDone:
+                {
+                    startScore = 50;
+                    
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success" message:@"You will now start with 50 points. Remember, you can do this as many times as you like!" delegate:self cancelButtonTitle:@"Cool!" otherButtonTitles: nil];
+                    [alert show];
+                    
+                    break;}
+                    //  This means the user hit 'Send'
+                case SLComposeViewControllerResultCancelled:{
+                    
+                }   break;
+            }
+        };
+        
+        //  Set the initial body of the Tweet
+        [tweetSheet setInitialText:@"Check out BroFist on iOS for FREE!"];
+        
+        //  Adds an image to the Tweet.  For demo purposes, assume we have an
+        //  image named 'larry.png' that we wish to attach
+        if (![tweetSheet addImage:[UIImage imageNamed:@"steelFIST"]]) {
+            NSLog(@"Unable to add the image!");
+        }
+        
+        //  Add an URL to the Tweet.  You can add multiple URLs.
+        if (![tweetSheet addURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/brofist-game-how-many-brofists/id894589832?mt=8"]]){
+            NSLog(@"Unable to add the URL!");
+        }
+        
+        //  Presents the Tweet Sheet to the user
+        [self presentViewController:tweetSheet animated:NO completion:^{
+            NSLog(@"Tweet sheet has been presented.");
+        }];
+    }
+}
+
+}
+
+
+
+
+}
+
+- (NSDictionary*)parseURLParams:(NSString *)query {
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val =
+        [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        params[kv[0]] = val;
+    }
+    return params;
+}
+
 
 #pragma mark - INIT OBJECTS
 -(void)resetHero{
@@ -443,31 +629,83 @@ int lol;
 }
 
 -(void)initObject1{
-    int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(100) - 250;
-    _object1.center = CGPointMake(r, h);
-    //pick random x coordinate, high y coordinate
+    int steelX = arc4random_uniform(320) ;
+    int steelY = -100;
+    
+    _object1.center = CGPointMake(steelX, steelY);
+    
+    [self collision:_object1];
+    
+    
 }
+
+-(void)collision:(UIImageView *)IV1{
+    
+    ob1 = _object1.frame;
+    ob2 = _object2.frame;
+    ob3 = _object3.frame;
+    ob4 = _object4.frame;
+    ob5 = _object5.frame;
+    
+    
+    [self coll1:IV1];
+}
+
+-(void)coll1:(UIImageView *)IV{
+    
+    IV.center = CGPointMake(IV.center.x, IV.center.y - 100);
+    
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        IV.center = CGPointMake(IV.center.x,IV.center.y -100);
+        [self coll2:IV];
+        
+    }
+}
+
+-(void)coll2:(UIImageView *)IV2{
+    
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        IV2.center = CGPointMake(IV2.center.x,IV2.center.y -100);
+    }
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        IV2.center = CGPointMake(IV2.center.x,IV2.center.y -100);
+    }
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        IV2.center = CGPointMake(IV2.center.x,IV2.center.y -100);
+    }
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        IV2.center = CGPointMake(IV2.center.x,IV2.center.y -100);
+    }
+    
+    if (CGRectIntersectsRect(ob1, ob2) || CGRectIntersectsRect(ob1, ob3) || CGRectIntersectsRect(ob1, ob4) || CGRectIntersectsRect(ob1, ob5)) {
+        [self initObject1];
+    }
+}
+
 -(void)initObject2{
     int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(300) - 950;
+    int h = -_object2.frame.size.height/2;
     _object2.center = CGPointMake(r, h);
+    [self collision:_object2];
 }
+
 -(void)initObject3{
     int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(100) - 350;
-    _object3.center = CGPointMake(r, h);
+    _object3.center = CGPointMake(r, -_object3.frame.size.height/2 - 30);
+    [self collision:_object3];
 }
+
 -(void)initObject4{
-    int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(300) - 400;
-    _object4.center = CGPointMake(r, h);
+    int r = arc4random_uniform(320);
+    _object4.center = CGPointMake(r, -_object4.frame.size.height/2 - 60);
+    [self collision:_object4];
 }
 -(void)initObject5{
-    int r = arc4random_uniform(320) ;
-    int h = arc4random_uniform(300) - 450;
-    _object5.center = CGPointMake(r, h);
+    int r = arc4random_uniform(320);
+    _object5.center = CGPointMake(r, -_object5.frame.size.height/2 - 90);
+    [self collision:_object5];
 }
+
 
 
 #pragma mark - AdMob Banner
@@ -508,13 +746,13 @@ int lol;
 -(void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     NSLog(@"%@",error);
     _connecting.hidden = YES;
-
+    
 }
 - (IBAction)noAds:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"noads"] != nil){
         if([[defaults objectForKey:@"noads"]isEqualToString:@"YES"]){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops."
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bought"
                                                             message:@"You've already bought this."
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
@@ -583,7 +821,7 @@ int lol;
         
     }
     _connecting.hidden = YES;
-   
+    
 }
 -(void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error{
     NSLog(@"%@",error);
@@ -592,23 +830,28 @@ int lol;
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions{
     for(SKPaymentTransaction *transaction in transactions){
         switch (transaction.transactionState){
-            case SKPaymentTransactionStatePurchasing: NSLog(@"Transaction state -> Purchasing");
+                
+            case SKPaymentTransactionStateDeferred:{
+                
+            }break;
+            case SKPaymentTransactionStatePurchasing:{
+                NSLog(@"Transaction state -> Purchasing");
                 //called when the user is in the process of purchasing, do not add any of your own code here.
-                break;
-            case SKPaymentTransactionStatePurchased:
+            } break;
+            case SKPaymentTransactionStatePurchased:{
                 //this is called when the user has successfully purchased the package (Cha-Ching!)
                 [self doRemoveAds]; //you can add your code for what you want to happen when the user buys the purchase here, for this tutorial we use removing ads
                 _connecting.hidden = YES;
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 NSLog(@"Transaction state -> Purchased");
-                break;
-            case SKPaymentTransactionStateRestored:
+            }break;
+            case SKPaymentTransactionStateRestored:{
                 NSLog(@"Transaction state -> Restored");
                 //add the same code as you did from SKPaymentTransactionStatePurchased here
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 _connecting.hidden = YES;
-                break;
-            case SKPaymentTransactionStateFailed:
+            }break;
+            case SKPaymentTransactionStateFailed:{
                 //called when the transaction does not finnish
                 if(transaction.error.code != SKErrorPaymentCancelled){
                     NSLog(@"Transaction state -> Cancelled");
@@ -616,7 +859,7 @@ int lol;
                 }
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 _connecting.hidden = YES;
-                break;
+            }break;
         }
     }
     

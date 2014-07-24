@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ACF24A3A192BE96100DCAC59"
-               BuildableName = "Dodge Template.app"
+               BuildableName = "BroFist.app"
                BlueprintName = "Dodge Template"
                ReferencedContainer = "container:Dodge Template.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ACF24A3A192BE96100DCAC59"
-            BuildableName = "Dodge Template.app"
+            BuildableName = "BroFist.app"
             BlueprintName = "Dodge Template"
             ReferencedContainer = "container:Dodge Template.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ACF24A3A192BE96100DCAC59"
-            BuildableName = "Dodge Template.app"
+            BuildableName = "BroFist.app"
             BlueprintName = "Dodge Template"
             ReferencedContainer = "container:Dodge Template.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ACF24A3A192BE96100DCAC59"
-            BuildableName = "Dodge Template.app"
+            BuildableName = "BroFist.app"
             BlueprintName = "Dodge Template"
             ReferencedContainer = "container:Dodge Template.xcodeproj">
          </BuildableReference>

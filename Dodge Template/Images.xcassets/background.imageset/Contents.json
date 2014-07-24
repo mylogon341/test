@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "idiom" : "universal"
+    },
+    {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "background.png"
+      "filename" : "bg-i5-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "background-1.png"
+      "filename" : "bg-i5.png"
     }
   ],
   "info" : {

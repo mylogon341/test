@@ -9,17 +9,38 @@
 #import "GADBannerView.h"
 #import <StoreKit/StoreKit.h>
 #import "GameCenterManager.h"
+#import "MylogonAudio.h"
+#import <Twitter/Twitter.h>
+#import <FacebookSDK/FacebookSDK.h>
 
+BOOL go;
 
-@interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>
+@interface ViewController : UIViewController <GADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, GameCenterManagerDelegate>{
+    float speed;
+
+    NSArray * objectsArray;
+    IBOutlet UIButton *credits;
+    UIButton * button;
+    IBOutlet UIButton *highscoreButton;
+    CGRect ob1;
+    CGRect ob2;
+    CGRect ob3;
+    CGRect ob4;
+    CGRect ob5;
+    int socialAlert;
+    
+    int startScore;
+    
+
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *hero;
 
-@property (weak, nonatomic) IBOutlet UIImageView *object1;
-@property (weak, nonatomic) IBOutlet UIImageView *object2;
-@property (weak, nonatomic) IBOutlet UIImageView *object3;
-@property (weak, nonatomic) IBOutlet UIImageView *object4;
-@property (weak, nonatomic) IBOutlet UIImageView *object5;
+@property (strong, nonatomic) IBOutlet UIImageView *object1;
+@property (strong, nonatomic) IBOutlet UIImageView *object2;
+@property (strong, nonatomic) IBOutlet UIImageView *object3;
+@property (strong, nonatomic) IBOutlet UIImageView *object4;
+@property (strong, nonatomic) IBOutlet UIImageView *object5;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet GADBannerView *banner;
 @property (weak, nonatomic) IBOutlet UIView *gameoverView;
@@ -35,7 +56,8 @@
 - (IBAction)highscores:(id)sender;
 - (IBAction)noAds:(id)sender;
 - (IBAction)restore:(id)sender;
-
+- (IBAction)freePoints:(id)sender;
+- (void)gameOver;
 
 
 @end
